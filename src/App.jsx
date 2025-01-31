@@ -1,10 +1,13 @@
 import './App.css'
 import Header from './components/header'
-import { useEffect, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import Home from './components/Home'
 import Viewcart from './components/Viewcart'
 import { BrowserRouter,Routes,Route } from 'react-router-dom'
+
+export const cartContext=createContext()
 function App() {
+
   const[cart,setCart]=useState(()=>{
     return JSON.parse(localStorage.getItem('cart'))||[]})
     useEffect(()=>{
@@ -12,15 +15,17 @@ function App() {
     },[cart])
   return (
     <>
+      <cartContext.Provider value={{cart,setCart}}>
       <BrowserRouter>
       <Header cart={cart}/>
       <div className='container'>
         <Routes>
-          <Route path='/' element={<Home cart={cart} setCart={setCart}/>} />
-          <Route path='/cart' element={<Viewcart cart={cart} setCart={setCart}/> }/>
+          <Route path='/' element={<Home />} />
+          <Route path='/cart' element={<Viewcart/> }/>
         </Routes>
       </div>
       </BrowserRouter>
+      </cartContext.Provider>
     </>
   )
 }

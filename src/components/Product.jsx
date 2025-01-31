@@ -1,5 +1,10 @@
+import { useState } from 'react'
+import { useContext } from 'react'
 import './Product.css'
-function Product({product,cart,setCart}){
+import { cartContext } from '../App'
+function Product({product}){
+    const{cart ,setCart}=useContext(cartContext)
+    const[message,setMessage]=useState('')
     const addToCart=()=>{
         let indexCartElement=cart.findIndex((item)=>item.id===product.id)
             if(indexCartElement >= 0){
@@ -11,6 +16,8 @@ function Product({product,cart,setCart}){
             else{
                 setCart([...cart ,{...product ,quantity :1}])
             }
+            setMessage('Item Added To Cart')
+            setTimeout(() => setMessage(""), 1000);
     }
 
     return(
@@ -23,6 +30,7 @@ function Product({product,cart,setCart}){
                     <h3>{product.name}</h3>
                     <h5>Rs:{product.price}</h5>
                     <button onClick={addToCart}>Add To Cart</button>
+                    {message && <p className="message">{message}</p>}
                 </div>
             </div>
         </>

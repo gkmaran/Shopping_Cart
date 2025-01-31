@@ -1,5 +1,5 @@
 .product{
-    width: 200px;
+    width: 250px;
     height: auto;
     padding: 10px;
     border: 1px solid #ccc;
@@ -9,8 +9,8 @@
     height:auto;
 }
 .product .img img {
-    width: 100%;
-    height: 100%;
+    width: 230px;
+    height: 200px;
     object-fit: cover;
     border: 1px solid #ccc;
 }
@@ -45,4 +45,10 @@
     justify-content: center;
     align-items: center;
 }
-    
+.message {
+    color: green;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+

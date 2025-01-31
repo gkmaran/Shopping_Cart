@@ -9,7 +9,7 @@ function Header({cart}){
                 </div>
                 <ul>
                     <li><Link to={'/'}>Home</Link></li>
-                    <li><Link to={'/cart'}><span>{cart.length}</span>Cart</Link></li>
+                    <li><Link to={'/cart'}><span>{cart.length}</span><i className="fa-solid fa-cart-shopping"></i></Link></li>
                 </ul>
             </div>
             
